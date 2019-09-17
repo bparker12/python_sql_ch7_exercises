@@ -50,7 +50,7 @@ class StudentWorkload:
                     students[student_name].append(exercise_name)
 
             for student_name, exercises in students.items():
-                print(student_name)
+                print(f'{student_name} is working on:')
                 for exercise in exercises:
                     print(f'\t* {exercise}')
 
@@ -63,55 +63,55 @@ workload.student_workload()
 #     * Urban Planner
 
 # Andy Collins has assign       ed:
-#     * Stock Report
-#     * Bag o Loot
-#     * Kandy Korner
+# #     * Stock Report
+# #     * Bag o Loot
+# #     * Kandy Korner
 
-class InstructorExercise:
+# class InstructorExercise:
 
-    def __init__(self):
-        self.db_path = "/Users/stuff/workspace/python/SQL/Ch3_StudentExercise3/student_exercise/studentexercises.db"
+#     def __init__(self):
+#         self.db_path = "/Users/stuff/workspace/python/SQL/Ch3_StudentExercise3/student_exercise/studentexercises.db"
 
-    def student_workload(self):
+#     def student_workload(self):
 
-        with sqlite3.connect(self.db_path) as conn:
-            instructors = dict()
+#         with sqlite3.connect(self.db_path) as conn:
+#             instructors = dict()
 
-            db_cursor = conn.cursor()
+#             db_cursor = conn.cursor()
 
-            db_cursor.execute("""
-                select
-                    e.Id ExerciseId,
-                    e.name,
-                    i.Id InstructorId,
-                    i.slack_handle,
-                    i.speciality,
-                    i.first_name,
-                    i.last_name
-                from Exercise e
-                join Student_Exercises se on se.ExerciseId = e.Id
-                join Instructor i on i.Id = se.StudentId;
-            """)
+#             db_cursor.execute("""
+#                 select
+#                     e.Id ExerciseId,
+#                     e.name,
+#                     i.Id InstructorId,
+#                     i.slack_handle,
+#                     i.speciality,
+#                     i.first_name,
+#                     i.last_name
+#                 from Exercise e
+#                 join Student_Exercises se on se.ExerciseId = e.Id
+#                 join Instructor i on i.Id = se.StudentId;
+#             """)
 
-            dataset = db_cursor.fetchall()
+#             dataset = db_cursor.fetchall()
 
-            for row in dataset:
-                exercise_id = row[0]
-                exercise_name = row [1]
-                instructor_id = row[2]
-                slack_handle = row[3]
-                speciality = row[4]
-                instructor_name = f'{row[5]} {row[6]}'
+#             for row in dataset:
+#                 exercise_id = row[0]
+#                 exercise_name = row [1]
+#                 instructor_id = row[2]
+#                 slack_handle = row[3]
+#                 speciality = row[4]
+#                 instructor_name = f'{row[5]} {row[6]}'
 
-                if instructor_name in instructors:
-                    instructors[instructor_name] = [exercise_name]
-                else:
-                    instructors[instructor_name].append(exercise_name)
+#                 if instructor_name in instructors:
+#                     instructors[instructor_name] = [exercise_name]
+#                 else:
+#                     instructors[instructor_name].append(exercise_name)
 
-            for instructor_name, exercises in instructors:
-                print(instructor_name)
-                for exercise in exercises:
-                    print(f'\t* exercise')
+#             for instructor_name, exercises in instructors:
+#                 print(instructor_name)
+#                 for exercise in exercises:
+#                     print(f'\t* exercise')
 
-slavedriving = InstructorExercise()
-slavedriving.student_workload()
+# slavedriving = InstructorExercise()
+# slavedriving.student_workload()

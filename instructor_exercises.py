@@ -51,7 +51,7 @@ class InstructorExercise:
                     instructors[instructor_name].append(exercise_name)
 
             for instructor_name, exercises in instructors.items():
-                print(instructor_name)
+                print(f'{instructor_name} has assigned:')
                 for exercise in exercises:
                     print(f'\t* {exercise}')
 
